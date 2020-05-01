@@ -48,3 +48,7 @@ function redraw() {
         context.stroke();
     }
 }
+$('#clear_complete').click(function () {
+    let canvas = document.getElementById('white_board')
+    context.clearRect(0, 0, canvas.width, canvas.height);
+});
