@@ -50,5 +50,8 @@ function redraw() {
 }
 $('#clear_complete').click(function () {
     let canvas = document.getElementById('white_board')
+    clickX = [];
+    clickY = [];
+    clickDrag = [];
     context.clearRect(0, 0, canvas.width, canvas.height);
 });
