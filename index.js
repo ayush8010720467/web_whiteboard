@@ -1,4 +1,7 @@
 context = document.getElementById('white_board').getContext("2d");
+wb =  document.getElementById('white_board')
+wb.height = window.innerHeight;
+wb.width = window.innerWidth;
 $('#white_board').mousedown(function (e) {
     var mouseX = e.pageX - this.offsetLeft;
     var mouseY = e.pageY - this.offsetTop;
@@ -19,27 +22,12 @@ $('#white_board').mouseup(function (e) {
 $('#white_board').mouseleave(function (e) {
     paint = false;
 });
-$('#choosePurpleSimpleColors').click(()=>{
-    curColor = colorPurple;
-})
-$('#chooseGreenSimpleColors').click(()=>{
-    curColor = colorGreen;
-})
-$('#chooseYellowSimpleColors').click(()=>{
-    curColor = colorYellow;
-})
-$('#chooseBrownSimpleColors').click(()=>{
-    curColor = colorBrown;
-})
 var clickX = new Array();
 var clickY = new Array();
 var clickDrag = new Array();
-var colorPurple = "#cb3594";
-var colorGreen = "#659b41";
-var colorYellow = "#ffcf33";
-var colorBrown = "#986928";
+var colorWhite = "#ffffff";
 
-var curColor = colorPurple;
+var curColor = colorWhite;
 var clickColor = new Array();
 var paint;
 
@@ -54,7 +42,6 @@ function redraw() {
 
     // context.strokeStyle = "#df4b26";
     context.lineJoin = "round";
-    context.lineWidth = $('#size').val(); // change the size of the stroke
     
     for (var i = 0; i < clickX.length; i++) {
         context.beginPath();
@@ -66,6 +53,7 @@ function redraw() {
         context.lineTo(clickX[i], clickY[i]);
         context.closePath();
         context.strokeStyle = clickColor[i]
+        // context.lineWidth = radius; // change the size of the stroke
         context.stroke();
     }
 }
