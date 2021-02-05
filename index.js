@@ -39,7 +39,8 @@ function addClick(x, y, dragging) {
 }
 function redraw() {
     context.clearRect(0, 0, context.canvas.width, context.canvas.height); // Clears the canvas
-
+    context.fillStyle = '#000'
+    context.fillRect(0,0,wb.width,wb.height)
     // context.strokeStyle = "#df4b26";
     context.lineJoin = "round";
     
@@ -62,5 +63,14 @@ $('#clear_complete').click(function () {
     clickX = [];
     clickY = [];
     clickDrag = [];
-    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.fillStyle = '#000'
+    context.fillRect(0,0,wb.width,wb.height)
 });
+function saveImage(){
+    var image = wb.toDataURL()
+    aLink = document.getElementById('test')
+    aLink.download = 'web_whiteboard.png'
+    aLink.href = image;
+    console.log('done')
+    aLink.click()
+}
