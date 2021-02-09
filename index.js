@@ -78,6 +78,7 @@ function createPage(){
     var counter =1;
     return function(){
         wb.height = window.innerHeight * (++counter);
+        window.scrollTo(0, window.innerHeight * (counter-1));
         redraw();
     }
 }
