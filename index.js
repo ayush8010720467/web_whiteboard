@@ -74,3 +74,11 @@ function saveImage(){
     console.log('done')
     aLink.click()
 }
+function createPage(){
+    var counter =1;
+    return function(){
+        wb.height = window.innerHeight * (++counter);
+        redraw();
+    }
+}
+newPage = createPage();
