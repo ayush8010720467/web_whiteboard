@@ -1,25 +1,26 @@
 context = document.getElementById('white_board').getContext("2d");
+var whiteBoard = document.getElementById("white_board")
+var clearBtn = document.getElementById("clear_complete")
 wb =  document.getElementById('white_board')
 wb.height = window.innerHeight;
 wb.width = window.innerWidth;
-$('#white_board').mousedown(function (e) {
+whiteBoard.addEventListener('mousedown',function (e) {
     var mouseX = e.pageX - this.offsetLeft;
     var mouseY = e.pageY - this.offsetTop;
-
     paint = true;
     addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
     redraw();
 });
-$('#white_board').mousemove(function (e) {
+whiteBoard.addEventListener('mousemove',function (e) {
     if (paint) {
         addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
         redraw();
     }
 });
-$('#white_board').mouseup(function (e) {
+whiteBoard.addEventListener('mouseup',function (e) {
     paint = false;
 });
-$('#white_board').mouseleave(function (e) {
+whiteBoard.addEventListener('mouseleave',function (e) {
     paint = false;
 });
 var clickX = new Array();
@@ -58,7 +59,7 @@ function redraw() {
         context.stroke();
     }
 }
-$('#clear_complete').click(function () {
+clearBtn.addEventListener('click', function(){
     let canvas = document.getElementById('white_board')
     clickX = [];
     clickY = [];
