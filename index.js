@@ -69,19 +69,6 @@ function toggleColor(checked) {
     console.log(clickColor);
 }
 
-function toggleErraser() {
-    // erasure = true;
-
-    console.log(clickX, clickY)
-        // console.log(context.lineWidth);
-        // context.lineWidth = 10;
-        // if (curColor === colorBlack) {
-        //     curColor = colorWhite;
-        // } else {
-        //     curColor = colorBlack;
-        // }
-}
-
 function redraw() {
     context.clearRect(0, 0, context.canvas.width, context.canvas.height); // Clears the canvas
     context.fillStyle = currentColor;
