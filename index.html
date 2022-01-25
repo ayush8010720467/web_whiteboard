@@ -7,32 +7,31 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Web WhiteBoard</title>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
-    <style>
-        html {
-          scroll-behavior: smooth;
-        }
-        div.sticky {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  font-size: 20px;
-}
-    </style>
+    <link href="./index.css" rel="stylesheet">
 </head>
 
 <body>
     <div class="sticky ">
+        <div class="left">
             <button id="clear_complete">Clear</button>
             <button onclick="newPage()">new page</button>
             <button onclick="saveImage()">save as image</button>
+        </div>
+        <div class="right">
+            <span>Toggle Theme</span>
+            <label class="switch">
+            <input type="checkbox" id="toggleTheme">
+            <span class="slider round"></span>
+          </label>
+        </div>
     </div>
-    
+
     <!-- <input id="size" placeholder="Enter the size" /> -->
     <div id="canvas_div">
-        <canvas id="white_board"  style="border: 1px solid;background: black;"></canvas>
+        <canvas id="white_board" style="border: 1px solid;background: black;"></canvas>
     </div>
     <a id='test'></a>
-    <img src="https://visitor-badge.laobi.icu/badge?page_id=ayush8010720467_web_whiteboard" height="1px" width="1px"/>
+    <img src="https://visitor-badge.laobi.icu/badge?page_id=ayush8010720467_web_whiteboard" height="1px" width="1px" />
 </body>
 <script src="index.js"></script>
 
