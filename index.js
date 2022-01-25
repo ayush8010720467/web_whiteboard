@@ -47,26 +47,6 @@ function addClick(x, y, dragging) {
     clickColor.push(curColor);
 }
 
-function removeClick(x, y) {
-    console.log(x, y)
-    var index2 = null;
-    clickX.forEach((valX, index) => {
-        if (x === valX) {
-            console.log(x, valX, index, y, clickY[index])
-            if (clickY[index] === y) {
-                index2 = index;
-            }
-        }
-    });
-    if (index2) {
-        clickX.splice(index2, 1);
-        clickY.splice(index2, 1);
-        clickDrag.pop();
-        clickColor.pop();
-    }
-    console.log(index2);
-}
-
 
 function toggleColor(checked) {
     console.log(checked);
