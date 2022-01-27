@@ -1,5 +1,5 @@
-context = document.getElementById('white_board').getContext("2d");
-wb = document.getElementById('white_board')
+let context = document.getElementById('white_board').getContext("2d");
+let wb = document.getElementById('white_board')
 wb.height = window.innerHeight;
 wb.width = window.innerWidth;
 $('#white_board').mousedown(function(e) {
@@ -116,4 +116,23 @@ function createPage() {
         redraw();
     }
 }
+function undo(){
+    if(clickX.length>20){
+        clickX = clickX.slice(0, clickX.length-10);
+        clickY = clickY.slice(0, clickY.length-10);
+        clickDrag = clickDrag.slice(0, clickDrag.length-10);
+    }
+    else{
+        clickX = [];
+    clickY = [];
+    clickDrag = [];
+    }
+    redraw();
+}
+function eventHandlers(e){
+    if (e.ctrlKey && e.key === 'z') {
+        undo();
+    }
+}
+document.addEventListener('keyup', eventHandlers, false);
 newPage = createPage();
