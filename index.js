@@ -1,8 +1,8 @@
 context = document.getElementById('white_board').getContext("2d");
-wb =  document.getElementById('white_board')
+wb = document.getElementById('white_board')
 wb.height = window.innerHeight;
 wb.width = window.innerWidth;
-$('#white_board').mousedown(function (e) {
+$('#white_board').mousedown(function(e) {
     var mouseX = e.pageX - this.offsetLeft;
     var mouseY = e.pageY - this.offsetTop;
 
@@ -10,26 +10,35 @@ $('#white_board').mousedown(function (e) {
     addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
     redraw();
 });
-$('#white_board').mousemove(function (e) {
+$('#white_board').mousemove(function(e) {
     if (paint) {
         addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
         redraw();
     }
 });
-$('#white_board').mouseup(function (e) {
+$('#white_board').mouseup(function(e) {
     paint = false;
 });
-$('#white_board').mouseleave(function (e) {
+$('#white_board').mouseleave(function(e) {
     paint = false;
 });
+$('#toggleTheme').change(function(e) {
+    console.log(e);
+    toggleColor($("#toggleTheme").prop('checked'));
+})
+
+
 var clickX = new Array();
 var clickY = new Array();
 var clickDrag = new Array();
 var colorWhite = "#ffffff";
+var colorBlack = "#000000";
+var currentColor = colorBlack;
 
 var curColor = colorWhite;
 var clickColor = new Array();
 var paint;
+var erasure = false;
 
 function addClick(x, y, dragging) {
     clickX.push(x);
@@ -37,13 +46,36 @@ function addClick(x, y, dragging) {
     clickDrag.push(dragging);
     clickColor.push(curColor);
 }
+
+
+function toggleColor(checked) {
+    console.log(checked);
+    if (checked === true) {
+        // wb.style.backgroundColor = colorWhite;
+        curColor = colorBlack;
+        currentColor = colorWhite;
+    } else {
+        curColor = colorWhite;
+        // wb.style.backgroundColor = colorBlack;
+        currentColor = colorBlack;
+    }
+
+    var currentLength = clickColor.length;
+    clickColor.length = 0;
+    clickColor.fill(curColor, 0, currentLength);
+    setTimeout(() => {
+        redraw();
+    }, 1000)
+    console.log(clickColor);
+}
+
 function redraw() {
     context.clearRect(0, 0, context.canvas.width, context.canvas.height); // Clears the canvas
-    context.fillStyle = '#000'
-    context.fillRect(0,0,wb.width,wb.height)
-    // context.strokeStyle = "#df4b26";
+    context.fillStyle = currentColor;
+    context.fillRect(0, 0, wb.width, wb.height)
+        // context.strokeStyle = "#df4b26";
     context.lineJoin = "round";
-    
+
     for (var i = 0; i < clickX.length; i++) {
         context.beginPath();
         if (clickDrag[i] && i) {
@@ -54,19 +86,20 @@ function redraw() {
         context.lineTo(clickX[i], clickY[i]);
         context.closePath();
         context.strokeStyle = clickColor[i]
-        // context.lineWidth = radius; // change the size of the stroke
+            // context.lineWidth = radius; // change the size of the stroke
         context.stroke();
     }
 }
-$('#clear_complete').click(function () {
+$('#clear_complete').click(function() {
     let canvas = document.getElementById('white_board')
     clickX = [];
     clickY = [];
     clickDrag = [];
-    context.fillStyle = '#000'
-    context.fillRect(0,0,wb.width,wb.height)
+    context.fillStyle = currentColor;
+    context.fillRect(0, 0, wb.width, wb.height)
 });
-function saveImage(){
+
+function saveImage() {
     var image = wb.toDataURL()
     aLink = document.getElementById('test')
     aLink.download = 'web_whiteboard.png'
@@ -74,11 +107,12 @@ function saveImage(){
     console.log('done')
     aLink.click()
 }
-function createPage(){
-    var counter =1;
-    return function(){
+
+function createPage() {
+    var counter = 1;
+    return function() {
         wb.height = window.innerHeight * (++counter);
-        window.scrollTo(0, window.innerHeight * (counter-1));
+        window.scrollTo(0, window.innerHeight * (counter - 1));
         redraw();
     }
 }
