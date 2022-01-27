@@ -35,7 +35,6 @@ web_whiteboard = (function(){
         paint = false;
     });
     $('#toggleTheme').change(function(e) {
-        console.log(e);
         toggleColor($("#toggleTheme").prop('checked'));
     })
     
@@ -48,8 +47,7 @@ web_whiteboard = (function(){
     
     
     function toggleColor(checked) {
-        console.log(checked);
-        if (checked === true) {
+        if (checked === false) {
             curColor = colorBlack;
             currentColor = colorWhite;
         } else {
@@ -57,7 +55,6 @@ web_whiteboard = (function(){
             currentColor = colorBlack;
         }
         var currentLength = clickColor.length;
-        console.log("63",currentLength);
         clickColor.fill(curColor, 0, currentLength-1)
         redraw();
     }
@@ -122,12 +119,13 @@ web_whiteboard = (function(){
         }
         redraw();
     }
-    function eventHandlers(e){
-        if (e.ctrlKey && e.key === 'z') {
-            undo();
-        }
-    }
-    document.addEventListener('keyup', eventHandlers, false);
+    
     let newPage = createPage();
-    return {newPage, saveImage}
+    return {newPage, saveImage, undo}
 })()
+function eventHandlers(e){
+    if (e.ctrlKey && e.key === 'z') {
+        web_whiteboard.undo();
+    }
+}
+document.addEventListener('keyup', eventHandlers, false);
