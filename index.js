@@ -50,22 +50,16 @@ web_whiteboard = (function(){
     function toggleColor(checked) {
         console.log(checked);
         if (checked === true) {
-            // wb.style.backgroundColor = colorWhite;
             curColor = colorBlack;
             currentColor = colorWhite;
         } else {
             curColor = colorWhite;
-            // wb.style.backgroundColor = colorBlack;
             currentColor = colorBlack;
         }
-    
         var currentLength = clickColor.length;
-        clickColor.length = 0;
-        clickColor.fill(curColor, 0, currentLength);
-        setTimeout(() => {
-            redraw();
-        }, 1000)
-        console.log(clickColor);
+        console.log("63",currentLength);
+        clickColor.fill(curColor, 0, currentLength-1)
+        redraw();
     }
     
     function redraw() {
@@ -123,8 +117,8 @@ web_whiteboard = (function(){
         }
         else{
             clickX = [];
-        clickY = [];
-        clickDrag = [];
+            clickY = [];
+            clickDrag = [];
         }
         redraw();
     }
