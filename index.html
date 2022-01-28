@@ -1,39 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Web WhiteBoard</title>
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
-    <link href="./index.css" rel="stylesheet">
-</head>
+    <link href="./index.css" rel="stylesheet" />
+  </head>
 
-<body>
-    <div class="sticky ">
-        <div class="left">
-            <button id="clear_complete">Clear</button>
-            <button onclick="web_whiteboard.newPage()">new page</button>
-            <button onclick="web_whiteboard.saveImage()">save as image</button>
-            <button onclick="web_whiteboard.undo()">undo</button>
-        </div>
-        <div class="right">
-            <span>Black Board</span>
-            <label class="switch">
-            <input type="checkbox" id="toggleTheme" checked>
-            <span class="slider round"></span>
-          </label>
-        </div>
+  <body>
+    <div class="sticky">
+      <div class="left">
+        <button id="clear_complete">Clear</button>
+        <button onclick="web_whiteboard.newPage()">new page</button>
+        <button onclick="web_whiteboard.saveImage()">save as image</button>
+        <button onclick="web_whiteboard.undo()">undo</button>
+      </div>
+      <div class="right">
+        <span>Black Board</span>
+        <label class="switch">
+          <input type="checkbox" id="toggleTheme" checked />
+          <span class="slider round"></span>
+        </label>
+      </div>
     </div>
 
     <!-- <input id="size" placeholder="Enter the size" /> -->
     <div id="canvas_div">
-        <canvas id="white_board" style="border: 1px solid;background: black;"></canvas>
+      <canvas
+        id="white_board"
+        style="border: 1px solid; background: black"
+      ></canvas>
     </div>
-    <a id='test'></a>
-    <img src="https://visitor-badge.laobi.icu/badge?page_id=ayush8010720467_web_whiteboard" height="1px" width="1px" />
-</body>
-<script src="index.js"></script>
-
+    <a id="test"></a>
+    <img
+      src="https://visitor-badge.laobi.icu/badge?page_id=ayush8010720467_web_whiteboard"
+      height="1px"
+      width="1px"
+    />
+  </body>
+  <script src="index.js"></script>
 </html>

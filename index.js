@@ -14,29 +14,42 @@ web_whiteboard = (function(){
     let curColor = colorWhite;
     let clickColor = new Array();
     let paint;
-    $('#white_board').mousedown(function(e) {
-        var mouseX = e.pageX - this.offsetLeft;
-        var mouseY = e.pageY - this.offsetTop;
-    
+
+    const getElement = (selector) => {
+        return document.querySelector(selector);
+    };
+
+    const attachEvent = (selector, eventType, listener) => {
+        getElement(selector).addEventListener(eventType, listener);
+    };
+
+    attachEvent("#white_board", "mousedown", (e) => {
+        const mouseX = e.pageX - wb.offsetLeft;
+        const mouseY = e.pageY - wb.offsetTop;
+        
         paint = true;
-        addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
+        addClick(mouseX, mouseY);
         redraw();
     });
-    $('#white_board').mousemove(function(e) {
+
+    attachEvent("#white_board", "mousemove", (e) => {
         if (paint) {
-            addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
+            addClick(e.pageX - wb.offsetLeft, e.pageY - wb.offsetTop, true);
             redraw();
         }
     });
-    $('#white_board').mouseup(function(e) {
+
+    attachEvent("#white_board", "mouseup", () => {
         paint = false;
     });
-    $('#white_board').mouseleave(function(e) {
+
+    attachEvent("#white_board", "mouseleave", () => {
         paint = false;
     });
-    $('#toggleTheme').change(function(e) {
-        toggleColor($("#toggleTheme").prop('checked'));
-    })
+
+    attachEvent("#toggleTheme", "change", () => {
+        toggleColor(getElement("#toggleTheme").checked);
+    });
     
     function addClick(x, y, dragging) {
         clickX.push(x);
@@ -80,7 +93,8 @@ web_whiteboard = (function(){
             context.stroke();
         }
     }
-    $('#clear_complete').click(function() {
+
+    attachEvent('#clear_complete',"click", () => {
         let canvas = document.getElementById('white_board')
         clickX = [];
         clickY = [];
