@@ -143,3 +143,64 @@ function eventHandlers(e){
     }
 }
 document.addEventListener('keyup', eventHandlers, false);
+
+
+//* MENU
+
+const menu = document.querySelector(".menu");
+const buttons = document.querySelector(".left");
+
+menu.addEventListener("click",(e)=>{
+    if(buttons.classList.contains("off")){
+        buttons.classList.remove("off");
+        buttons.classList.add("show");        
+    }
+    else{
+        buttons.classList.remove("show");
+        buttons.classList.add("off");  
+    }
+})
+
+//* Hover
+const clearHover = document.querySelector(".clear");
+const newHover = document.querySelector(".new");
+const saveHover = document.querySelector(".save");
+const undoHover = document.querySelector(".undo");
+
+const clearBtn = document.querySelector(".clearBtn");
+const newBtn = document.querySelector(".newBtn");
+const saveBtn = document.querySelector(".saveBtn");
+const undoBtn = document.querySelector(".undoBtn");
+
+clearBtn.addEventListener("mouseover",()=>{
+    clearHover.style.display = "block";
+});
+
+clearBtn.addEventListener("mouseout",()=>{
+    clearHover.style.display = "none";
+});
+
+newBtn.addEventListener("mouseover",()=>{
+    newHover.style.display = "block";
+});
+
+newBtn.addEventListener("mouseout",()=>{
+    newHover.style.display = "none";
+});
+
+saveBtn.addEventListener("mouseover",()=>{
+    saveHover.style.display = "block";
+});
+
+saveBtn.addEventListener("mouseout",()=>{
+    saveHover.style.display = "none";
+});
+
+undoBtn.addEventListener("mouseover",()=>{
+    undoHover.style.display = "block";
+});
+
+undoBtn.addEventListener("mouseout",()=>{
+    undoHover.style.display = "none";
+});
+
