@@ -82,3 +82,10 @@ input:checked+.slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+
+
+/*Pen Cursor*/
+
+#canvas_div{
+    cursor: url("pencil-outline.svg"), auto;  
+}
