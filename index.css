@@ -13,6 +13,7 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Shifted the inline css to external css */
 canvas{
     border: 1px solid black;
     width: 97vw;
@@ -127,7 +128,7 @@ input:checked+.slider:before {
   width: 50%;
 }
 
-/* Menu  */
+/* Hambergur menu */
 
 .menu {
   background-color: transparent;
@@ -171,7 +172,7 @@ input:checked+.slider:before {
   stroke-width: 6;
 }
 
-/* hover effects */
+/* hover effects - showing the text if hovered on buttons*/
 
 .hover{
   position: absolute;
