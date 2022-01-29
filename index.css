@@ -87,5 +87,5 @@ input:checked+.slider:before {
 /*Pen Cursor*/
 
 #canvas_div{
-    cursor: url("pencil-outline.svg"), auto;  
+    cursor: url("static/icons/pencil-outline.svg"), auto;  
 }
