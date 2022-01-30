@@ -1,10 +1,10 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -13,11 +13,16 @@ html {
     scroll-behavior: smooth;
 }
 
+
 /* Shifted the inline css to external css */
-canvas{
+
+canvas {
     border: 1px solid black;
-    width: 97vw;
+    width: 98vw;
     margin: 10px;
+    position: relative;
+    top: 48px;
+    left: -65px;
 }
 
 .sticky {
@@ -31,8 +36,10 @@ canvas{
     background-color: #000000;
 }
 
+
 /* btn - buttons of the menu  */
-.btn{
+
+.btn {
     border: none;
     outline: none;
     padding: 0.2rem;
@@ -42,9 +49,10 @@ canvas{
     margin: 0.2rem;
 }
 
-.btn:hover{
+.btn:hover {
     background-color: #d6d6d6;
 }
+
 
 /* The switch - the box around the slider */
 
@@ -116,110 +124,135 @@ input:checked+.slider:before {
     border-radius: 50%;
 }
 
+
 /* right - the right box which contains the toggle button of blackboard */
-.right{
-  position: absolute;
-  top: 15px;
-  right: 20px;
+
+.right {
+    position: fixed;
+    top: 15px;
+    right: 20px;
 }
+
 
 /* left - the whole div element containing the 4 buttons */
-.left{
-  width: 50%;
+
+.left {
+    width: 50%;
+    z-index: 10;
+    position: fixed;
+    left: 5rem;
 }
 
-.black-board-text{
-  color: white;
+.black-board-text {
+    color: white;
 }
+
 
 /* Hambergur menu */
 
 .menu {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  margin-right: 0.8rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    margin-right: 0.8rem;
 }
+
 .line {
-  fill: none;
-  stroke: white;
-  stroke-width: 6;
-  transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
-    stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+    fill: none;
+    stroke: white;
+    stroke-width: 6;
+    transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1), stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .line1 {
-  stroke-dasharray: 60 207;
-  stroke-width: 6;
+    stroke-dasharray: 60 207;
+    stroke-width: 6;
 }
+
 .line2 {
-  stroke-dasharray: 60 60;
-  stroke-width: 6;
+    stroke-dasharray: 60 60;
+    stroke-width: 6;
 }
+
 .line3 {
-  stroke-dasharray: 60 207;
-  stroke-width: 6;
+    stroke-dasharray: 60 207;
+    stroke-width: 6;
 }
+
 .opened .line1 {
-  stroke-dasharray: 90 207;
-  stroke-dashoffset: -134;
-  stroke-width: 6;
+    stroke-dasharray: 90 207;
+    stroke-dashoffset: -134;
+    stroke-width: 6;
 }
+
 .opened .line2 {
-  stroke-dasharray: 1 60;
-  stroke-dashoffset: -30;
-  stroke-width: 6;
+    stroke-dasharray: 1 60;
+    stroke-dashoffset: -30;
+    stroke-width: 6;
 }
+
 .opened .line3 {
-  stroke-dasharray: 90 207;
-  stroke-dashoffset: -134;
-  stroke-width: 6;
+    stroke-dasharray: 90 207;
+    stroke-dashoffset: -134;
+    stroke-width: 6;
 }
+
 
 /* hover effects - showing the text if hovered on buttons*/
 
-.hover{
-  position: absolute;
-  background-color: #d6d6d6;
-  padding: 0.2rem;
-  font-size: 15px;
-  border: 1px solid black;
-  top: 60px;
-}
-.clear{
-  display: none;
-}
-.new{
-  left: 95px;
-  display: none;
-}
-.save{
-  display: none;
-  left: 130px;
-}
-.undo{
-  display: none;
-  left: 200px;
-}
-.saveWork{
-  display: none;
-  left: 235px;
-}
-.deleteSaved{
-  display: none;
-  left: 260px;
+.hover {
+    position: absolute;
+    background-color: #d6d6d6;
+    padding: 0.2rem;
+    font-size: 15px;
+    border: 1px solid black;
+    top: 60px;
 }
 
+.clear {
+    display: none;
+}
+
+.new {
+    left: 95px;
+    display: none;
+}
+
+.save {
+    display: none;
+    left: 130px;
+}
+
+.undo {
+    display: none;
+    left: 200px;
+}
+
+.saveWork {
+    display: none;
+    left: 235px;
+}
+
+.deleteSaved {
+    display: none;
+    left: 260px;
+}
+
+
 /* show , off - These are used to toggle the display  */
-.show{
-  display: block;
+
+.show {
+    display: block;
 }
-.off{
-  display: none;
+
+.off {
+    display: none;
 }
+
 
 /*Pen Cursor*/
 
-#canvas_div{
-    cursor: url("static/icons/pencil-outline.svg"), auto;  
+#canvas_div {
+    cursor: url("static/icons/pencil-outline.svg"), auto;
 }

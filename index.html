@@ -1,71 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Web WhiteBoard</title>
     <link href="./index.css" rel="stylesheet" />
-  </head>
+</head>
 
-  <body>
+<body>
     <div class="sticky">
 
-      <button class="menu" onclick="this.classList.toggle('opened');this.setAttribute('aria-expanded', this.classList.contains('opened'))" aria-label="Main Menu">
-        <svg width="40" height="40" viewBox="0 0 100 100">
-          <path class="line line1" d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
-          <path class="line line2" d="M 20,50 H 80" />
-          <path class="line line3" d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" />
-        </svg>
+        <button class="menu" onclick="this.classList.toggle('opened');this.setAttribute('aria-expanded', this.classList.contains('opened'))" aria-label="Main Menu">
+      <svg width="40" height="40" viewBox="0 0 100 100">
+        <path class="line line1"
+          d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
+        <path class="line line2" d="M 20,50 H 80" />
+        <path class="line line3"
+          d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" />
+      </svg>
+    </button>
+        <div class="left off">
+            <span class=" hover clear">Clear</span>
+            <span class=" hover new">New Page</span>
+            <span class=" hover save">Save as image</span>
+            <span class=" hover undo">Undo</span>
+            <span class=" hover saveWork">Save work</span>
+            <span class=" hover deleteSaved">Delete saved work</span>
+
+            <button class="btn clearBtn" onclick="web_whiteboard.clearAll()">
+        <img src="./static/icons/broom.png" alt="">
       </button>
-      <div class="left off">
-        <span class=" hover clear">Clear</span>
-        <span class=" hover new">New Page</span>
-        <span class=" hover save">Save as image</span>
-        <span class=" hover undo">Undo</span>
-        <span class=" hover saveWork">Save work</span>
-        <span class=" hover deleteSaved">Delete saved work</span>
+            <button class="btn newBtn" onclick="web_whiteboard.newPage()">
+        <img src="./static/icons/new-page.png" alt="">
+      </button>
+            <button class="btn saveBtn" onclick="web_whiteboard.saveImage()">
+        <img src="./static/icons/download.png" alt="">
+      </button>
+            <button class="btn undoBtn" onclick="web_whiteboard.undo()">
+        <img src="./static/icons/undo-circular-arrow.png" alt="">
+      </button>
+            <button class="btn saveWorkBtn" onclick="web_whiteboard.saveWork()">
+        <img src="./static/icons/save.png" alt="">
+      </button>
+            <button class="btn deleteSavedBtn" onclick="clearStorage()">
+        <img src="./static/icons/delete.png" alt="">
+      </button>
 
-        <button class="btn clearBtn" onclick="web_whiteboard.clearAll()">
-          <img src="/static/icons/broom.png" alt="">
-        </button>
-        <button class="btn newBtn" onclick="web_whiteboard.newPage()">
-          <img src="/static/icons/new-page.png" alt="">
-        </button>
-        <button class="btn saveBtn" onclick="web_whiteboard.saveImage()">
-          <img src="/static/icons/download.png" alt="">
-        </button>
-        <button class="btn undoBtn" onclick="web_whiteboard.undo()">
-          <img src="/static/icons/undo-circular-arrow.png" alt="">
-        </button>
-        <button class ="btn saveWorkBtn" onclick="web_whiteboard.saveWork()">
-          <img src="/static/icons/save.png" alt="">
-        </button>
-        <button class ="btn deleteSavedBtn" onclick="clearStorage()">
-          <img src="/static/icons/delete.png" alt="">
-        </button>
-
-      <div class="right">
-        <span class="black-board-text">Black Board</span>
-        <label class="switch">
+            <div class="right">
+                <span class="black-board-text">Black Board</span>
+                <label class="switch">
           <input type="checkbox" id="toggleTheme" checked />
           <span class="slider round"></span>
         </label>
-      </div>
-    </div>
+            </div>
+        </div>
 
-    <!-- <input id="size" placeholder="Enter the size" /> -->
-    <div id="canvas_div">
-      <canvas
-        id="white_board"
-      ></canvas>
-    </div>
-    <a id="imageGetter"></a>
-    <img
-      src="https://visitor-badge.laobi.icu/badge?page_id=ayush8010720467_web_whiteboard"
-      height="1px"
-      width="1px"
-    />
-  </body>
-  <script src="index.js"></script>
+        <!-- <input id="size" placeholder="Enter the size" /> -->
+        <div id="canvas_div">
+            <canvas id="white_board"></canvas>
+        </div>
+        <a id="imageGetter"></a>
+        <img src="https://visitor-badge.laobi.icu/badge?page_id=ayush8010720467_web_whiteboard" height="1px" width="1px" />
+</body>
+<script src="index.js"></script>
+
 </html>
