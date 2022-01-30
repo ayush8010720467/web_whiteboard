@@ -10,6 +10,7 @@
 
   <body>
     <div class="sticky">
+
       <button class="menu" onclick="this.classList.toggle('opened');this.setAttribute('aria-expanded', this.classList.contains('opened'))" aria-label="Main Menu">
         <svg width="40" height="40" viewBox="0 0 100 100">
           <path class="line line1" d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
@@ -25,7 +26,7 @@
         <span class=" hover saveWork">Save work</span>
         <span class=" hover deleteSaved">Delete saved work</span>
 
-        <button class="btn clearBtn" id="clear_complete">
+        <button class="btn clearBtn" onclick="web_whiteboard.clearAll()">
           <img src="/static/icons/broom.png" alt="">
         </button>
         <button class="btn newBtn" onclick="web_whiteboard.newPage()">
@@ -43,7 +44,7 @@
         <button class ="btn deleteSavedBtn" onclick="clearStorage()">
           <img src="/static/icons/delete.png" alt="">
         </button>
-      </div>
+
       <div class="right">
         <span class="black-board-text">Black Board</span>
         <label class="switch">
@@ -59,7 +60,7 @@
         id="white_board"
       ></canvas>
     </div>
-    <a id="test"></a>
+    <a id="imageGetter"></a>
     <img
       src="https://visitor-badge.laobi.icu/badge?page_id=ayush8010720467_web_whiteboard"
       height="1px"

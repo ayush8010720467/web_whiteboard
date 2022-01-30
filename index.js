@@ -1,19 +1,35 @@
+"use strict"
 window.web_whiteboard = {}
 web_whiteboard = (function(){
+    let prevSate = getSavedWork();
+    console.log(prevSate)
     let context = document.getElementById('white_board').getContext("2d");
     let wb = document.getElementById('white_board')
-    wb.height = window.innerHeight;
-    wb.width = window.innerWidth;
-    let clickX = new Array();
-    let clickY = new Array();
-    let clickDrag = new Array();
+    if(prevSate && window.innerHeight >= prevSate.height){
+        
+        wb.height = window.innerHeight;
+    } else{
+        wb.height = prevSate?.height || window.innerHeight;
+    }
+    if(prevSate && window.innerWidth >= prevSate.width){
+        wb.width = window.innerWidth;
+    } else{
+        wb.width = prevSate?.width || window.innerWidth;
+    }
+    let clickX = prevSate?.clickX || [];
+    let clickY = prevSate?.clickY || [];
+    let clickDrag = prevSate?.clickDrag || [];
+    let clickColor = prevSate?.clickColor || [];
     let colorWhite = "#ffffff";
     let colorBlack = "#000000";
     let currentColor = colorBlack;
     
     let curColor = colorWhite;
-    let clickColor = new Array();
+    
     let paint;
+    if(clickX.length > 0){
+        redraw();
+    }
 
     const getElement = (selector) => {
         return document.querySelector(selector);
@@ -93,29 +109,29 @@ web_whiteboard = (function(){
             context.stroke();
         }
     }
-
-    attachEvent('#clear_complete',"click", () => {
-        let canvas = document.getElementById('white_board')
+    
+    function saveImage() {
+        let image = wb.toDataURL()
+        let aLink = document.getElementById('imageGetter')
+        aLink.download = 'web_whiteboard.png'
+        aLink.href = image;
+        aLink.click();
+    }
+    
+    function clearAll(){
         clickX = [];
         clickY = [];
         clickDrag = [];
         context.fillStyle = currentColor;
         context.fillRect(0, 0, wb.width, wb.height)
-    });
-    
-    function saveImage() {
-        var image = wb.toDataURL()
-        aLink = document.getElementById('test')
-        aLink.download = 'web_whiteboard.png'
-        aLink.href = image;
-        console.log('done')
-        aLink.click()
     }
-    
+
     function createPage() {
-        var counter = 1;
+        var counter = +localStorage.getItem("current_page") || 1;
+        localStorage.setItem("current_page",counter);
         return function() {
             wb.height = window.innerHeight * (++counter);
+            localStorage.setItem("current_page",counter);
             window.scrollTo(0, window.innerHeight * (counter - 1));
             redraw();
         }
@@ -134,16 +150,36 @@ web_whiteboard = (function(){
         redraw();
     }
     
+    function saveWork(){
+        localStorage.setItem("previous_parms",JSON.stringify(getWork()));
+    }
+    function getSavedWork(){
+        // this function gets the parametes from the local storage and returns them
+        return JSON.parse(localStorage.getItem("previous_parms"));
+    }
+    function getWork(){
+        return {
+            height: wb.height,
+            width: wb.width,
+            clickX,
+            clickY,
+            clickDrag,
+            clickColor
+        }
+    }
     let newPage = createPage();
-    return {newPage, saveImage, undo}
+    return {newPage, saveImage, undo, saveWork, clearAll}
 })()
+function clearStorage(){
+    localStorage.clear();
+    location.reload();
+}
 function eventHandlers(e){
     if (e.ctrlKey && e.key === 'z') {
         web_whiteboard.undo();
     }
 }
 document.addEventListener('keyup', eventHandlers, false);
-
 
 //* MENU
 
@@ -223,4 +259,9 @@ deleteSavedBtn.addEventListener("mouseover",()=>{
 deleteSavedBtn.addEventListener("mouseout",()=>{
     deleteSavedHover.style.display = "none";
 });
+
+
+setInterval(()=>{
+    web_whiteboard.saveWork();
+},1000 * 10 * 1);
 
