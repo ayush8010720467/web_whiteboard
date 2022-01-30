@@ -166,11 +166,15 @@ const clearHover = document.querySelector(".clear");
 const newHover = document.querySelector(".new");
 const saveHover = document.querySelector(".save");
 const undoHover = document.querySelector(".undo");
+const saveWorkHover = document.querySelector(".saveWork");
+const deleteSavedHover = document.querySelector(".deleteSaved");
 
 const clearBtn = document.querySelector(".clearBtn");
 const newBtn = document.querySelector(".newBtn");
 const saveBtn = document.querySelector(".saveBtn");
 const undoBtn = document.querySelector(".undoBtn");
+const saveWorkBtn = document.querySelector(".saveWorkBtn");
+const deleteSavedBtn = document.querySelector(".deleteSavedBtn");
 
 clearBtn.addEventListener("mouseover",()=>{
     clearHover.style.display = "block";
@@ -202,5 +206,21 @@ undoBtn.addEventListener("mouseover",()=>{
 
 undoBtn.addEventListener("mouseout",()=>{
     undoHover.style.display = "none";
+});
+
+saveWorkBtn.addEventListener("mouseover",()=>{
+    saveWorkHover.style.display = "block";
+});
+
+saveWorkBtn.addEventListener("mouseout",()=>{
+    saveWorkHover.style.display = "none";
+});
+
+deleteSavedBtn.addEventListener("mouseover",()=>{
+    deleteSavedHover.style.display = "block";
+});
+
+deleteSavedBtn.addEventListener("mouseout",()=>{
+    deleteSavedHover.style.display = "none";
 });
 
