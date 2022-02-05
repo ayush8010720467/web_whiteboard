@@ -23,7 +23,7 @@ canvas {
     position: relative;
     top:0;
     left:0;
-	box-shadow:-1px 1px 7px 2px rgb(0,0,0, .2)
+	box-shadow:-1px 1px 7px 2px rgb(0,0,0, .2+)
 	
 }
 
@@ -277,7 +277,15 @@ input:checked+.slider:before {
     border-top: 1px solid #dadbdc;
 	border-bottom:1px solid #dadbdc
 }
-.child-container{display:flex;align-items:center;cursor: pointer;}
+.child-container{display:flex;align-items:center;}
 .child-container li:last-child{border-right:0;}
 .child-container li{min-width:40px;border-right:1px solid #e3e4e5;text-align:center;padding:15px 20px}
 .child-container li span{text-align:center;font-size:11px;font-family:arial;display:block;}
+
+.bi{cursor:pointer}
+.bi-trash3-fill{color:#f6aeac;}
+.bi-file-earmark-plus-fill{color:#2875b4}
+.bi-file-earmark-arrow-down-fill{color:#dd6e6d}
+.bi-arrow-counterclockwise{color:#}
+.bi-download{color:#2e527c}
+.bi-file-earmark-x-fill{color:#f00}
