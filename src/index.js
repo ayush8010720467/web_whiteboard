@@ -4,7 +4,8 @@ web_whiteboard = (function(){
     let prevSate = getSavedWork();
     console.log(prevSate)
     let context = document.getElementById('white_board').getContext("2d");
-    let wb = document.getElementById('white_board')
+    let wb = document.getElementById('white_board');
+    let div_wb = document.getElementById('canvas_div');
     if(prevSate && window.innerHeight >= prevSate.height){
         
         wb.height = window.innerHeight;
@@ -40,8 +41,8 @@ web_whiteboard = (function(){
     };
 
     attachEvent("#white_board", "mousedown", (e) => {
-        const mouseX = e.pageX - wb.offsetLeft;
-        const mouseY = e.pageY - wb.offsetTop;
+        const mouseX = e.pageX - div_wb.offsetLeft;
+        const mouseY = e.pageY - div_wb.offsetTop;
         
         paint = true;
         addClick(mouseX, mouseY);
@@ -50,7 +51,7 @@ web_whiteboard = (function(){
 
     attachEvent("#white_board", "mousemove", (e) => {
         if (paint) {
-            addClick(e.pageX - wb.offsetLeft, e.pageY - wb.offsetTop, true);
+            addClick(e.pageX - div_wb.offsetLeft, e.pageY - div_wb.offsetTop, true);
             redraw();
         }
     });
@@ -263,5 +264,5 @@ deleteSavedBtn.addEventListener("mouseout",()=>{
 
 setInterval(()=>{
     web_whiteboard.saveWork();
-},1000 * 10 * 1);
+},1000);
 
