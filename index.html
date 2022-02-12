@@ -2,169 +2,90 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Web WhiteBoard</title>
-    <link href="./src/index.css" rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Web WhiteBoard</title>
+  <link href="./src/index.css" rel="stylesheet" />
 </head>
 
 <body>
   <div class="sticky">
-  <button class="menu" onclick="this.classList.toggle('opened');this.setAttribute('aria-expanded', this.classList.contains('opened'))" aria-label="Main Menu">
-      <svg width="40" height="40" viewBox="0 0 100 100">
-        <path class="line line1"
-          d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
-        <path class="line line2" d="M 20,50 H 80" />
-        <path class="line line3"
-          d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" />
-      </svg>
-    </button>
-        <div class="left off">
-            <span class=" hover clear">Clear</span>
-            <span class=" hover new">New Page</span>
-            <span class=" hover save">Save as image</span>
-            <span class=" hover undo">Undo</span>
-            <span class=" hover saveWork">Save work</span>
-            <span class=" hover deleteSaved">Delete saved work</span>
+    <ul class="list-none main-container">
+      <li><a href="#">File</a></li>
+      <li class="active">
+        <a href="#">Edit</a>
+      </li>
+    </ul>
 
-            <button class="btn clearBtn" onclick="web_whiteboard.clearAll()">
-        <img src="./static/icons/broom.png" alt="">
-      </button>
-            <button class="btn newBtn" onclick="web_whiteboard.newPage()">
-        <img src="./static/icons/new-page.png" alt="">
-      </button>
-            <button class="btn saveBtn" onclick="web_whiteboard.saveImage()">
-        <img src="./static/icons/download.png" alt="">
-      </button>
-            <button class="btn undoBtn" onclick="web_whiteboard.undo()">
-        <img src="./static/icons/undo-circular-arrow.png" alt="">
-      </button>
-            <button class="btn saveWorkBtn" onclick="web_whiteboard.saveWork()">
-        <img src="./static/icons/save.png" alt="">
-      </button>
-            <button class="btn deleteSavedBtn" onclick="clearStorage()">
-        <img src="./static/icons/delete.png" alt="">
-      </button>
+    <div class="toolsContainer">
+      <ul class="list-none child-container">
+        <li>
+          <p onclick="web_whiteboard.clearAll()">
+            <img src="./static/icons/trash.svg" />
+            <span>Trash Work</span>
+          </p>
+        </li>
+        <li>
+          <p onclick="web_whiteboard.newPage()">
+            <img src="./static/icons/create-file.svg" />
+            <span>Add New Page</span>
+          </p>
+        </li>
 
-            <div class="right">
-                <span class="black-board-text">Black Board</span>
-                <label class="switch">
-          <input type="checkbox" id="toggleTheme" checked />
-          <span class="slider round"></span>
-        </label>
-            </div>
+        <li>
+          <p onclick="web_whiteboard.saveImage()">
+            <svg onclick="web_whiteboard.undo()" xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+              fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z" />
+              <path
+                d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z" />
+            </svg>
+            <span>Undo</span>
+          </p>
+        </li>
 
+        <li>
+          <p onclick="web_whiteboard.saveImage()">
+            <img src="./static/icons/save-file.svg" />
+            <span>Save as Image</span>
+          </p>
+        </li>
 
+        <li>
+          <p onclick="web_whiteboard.saveWork()">
+            <img src="./static/icons/save-work.svg" />
+            <span>Save Work</span>
+          </p>
+        </li>
+
+        <li>
+          <p onclick="clearStorage()">
+            <img src="./static/icons/delete-work.svg" />
+            <span>Delete Saved Work</span>
+          </p>
+        </li>
+
+        <div class="right">
+          <span class="black-board-text">Black Board</span>
+          <label class="switch">
+            <input type="checkbox" id="toggleTheme" checked />
+            <span class="slider round"></span>
+          </label>
         </div>
-</div> 
+
+      </ul>
+    </div>
+  </div>
 
 
+  <div id="canvas_div">
+    <canvas id="white_board"></canvas>
+  </div>
+  <a id="imageGetter"></a>
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=ayush8010720467_web_whiteboard" height="1px" width="1px" />
 
 
-
-
-
-
-
-
-
- <ul class="list-none main-container">
-  <li><a href="#">File</a></li>
-  <li class="active">
-  <a href="#">Home</a>
- </li>  
-  </ul>
-
-
-<div class="toolsContainer">
-<ul class="list-none child-container">
-	<li>
-	<p>
-<img src="./static/icons/trash.svg" />
-
-
-<!--	<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-eraser-fill" viewBox="0 0 16 16">
-    <path d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828l6.879-6.879zm.66 11.34L3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293l.16-.16z"/>
-	</svg>
-	-->
-	<span>Trash Work</span>
-	</p>
-	</li>
-		<li>
-	<p>
-    <img src="./static/icons/create-file.svg" />
-
-	<span>Add New Page</span>
-
-</p>
-	</li>
-
-		<li>
-	<p>
-
-<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
-  <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
-</svg>
-<span>Undo</span>
-</p>
-	</li>
-
-	<li>
-	<p>
-    <img src="./static/icons/save-file.svg" />
-    <span>Save as Image</span>
-  </p>
-</li>
-
-<li>
-  <p>
-    <img src="./static/icons/save-work.svg" />
-    <span>Save Work</span>
-  </p>
-</li>
-<li>
-  <p>
-    <img src="./static/icons/delete-work.svg" />
-    <span>Delete Saved Work</span>
-</p>
-	</li>
-	</ul>
-
-
-  <!-- <button class="btn clearBtn" onclick="web_whiteboard.clearAll()">
-    <img src="./static/icons/broom.png" alt="">
-  </button>
-        <button class="btn newBtn" onclick="web_whiteboard.newPage()">
-    <img src="./static/icons/new-page.png" alt="">
-  </button>
-        <button class="btn saveBtn" onclick="web_whiteboard.saveImage()">
-    <img src="./static/icons/download.png" alt="">
-  </button>
-        <button class="btn undoBtn" onclick="web_whiteboard.undo()">
-    <img src="./static/icons/undo-circular-arrow.png" alt="">
-  </button>
-        <button class="btn saveWorkBtn" onclick="web_whiteboard.saveWork()">
-    <img src="./static/icons/save.png" alt="">
-  </button>
-        <button class="btn deleteSavedBtn" onclick="clearStorage()">
-    <img src="./static/icons/delete.png" alt="">
-  </button> -->
- 
-
-</div>
-
-
-        <!-- <input id="size" placeholder="Enter the size" /> -->
-
-        <div id="canvas_div">
-                      <canvas id="white_board"></canvas>
-        </div>
-        <a id="imageGetter"></a>
-        <img src="https://visitor-badge.laobi.icu/badge?page_id=ayush8010720467_web_whiteboard" height="1px" width="1px" />
-
-        
 </body>
 <script src="./src/index.js"></script>
 
