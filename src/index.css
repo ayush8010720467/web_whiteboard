@@ -27,19 +27,11 @@ canvas {
 	
 }
 
-
-
-
-
 .sticky {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
-    font-size: 20px;
-    display: flex;
-    padding: 0.5rem;
-    height: 60px;
-    background-color: #000000;
+    z-index: 5;
 }
 /* btn - buttons of the menu  */
 
@@ -67,7 +59,6 @@ canvas {
     height: 24px;
 }
 
-
 /* Hide default HTML checkbox */
 
 .switch input {
@@ -75,7 +66,6 @@ canvas {
     width: 0;
     height: 0;
 }
-
 
 /* The slider */
 
@@ -117,7 +107,6 @@ input:checked+.slider:before {
     transform: translateX(26px);
 }
 
-
 /* Rounded sliders */
 
 .slider.round {
@@ -128,15 +117,13 @@ input:checked+.slider:before {
     border-radius: 50%;
 }
 
-
 /* right - the right box which contains the toggle button of blackboard */
 
 .right {
     position: fixed;
-    top: 15px;
+    top: 60px;
     right: 20px;
 }
-
 
 /* left - the whole div element containing the 4 buttons */
 
@@ -148,7 +135,9 @@ input:checked+.slider:before {
 }
 
 .black-board-text {
-    color: white;
+    color: black;
+    top: 4px;
+    position: relative;
 }
 
 
@@ -260,7 +249,7 @@ input:checked+.slider:before {
 #canvas_div {
     cursor: url("static/icons/pencil-outline.svg"), auto;
     text-align: center;
-	padding:50px 0;
+	padding:30px 0;
 }
 
 
