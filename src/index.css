@@ -18,13 +18,12 @@ html {
 /* Shifted the inline css to external css */
 
 canvas {
-    width:90vw;
+    width: 90vw;
     margin: 10px;
     position: relative;
     top:0;
     left:0;
 	box-shadow:-1px 1px 7px 2px rgb(0,0,0, .2)
-	
 }
 
 .sticky {
@@ -33,22 +32,6 @@ canvas {
     top: 0;
     z-index: 5;
 }
-/* btn - buttons of the menu  */
-
-.btn {
-    border: none;
-    outline: none;
-    padding: 0.2rem;
-    cursor: pointer;
-    width: 35px;
-    height: 35px;
-    margin: 0.2rem;
-}
-
-.btn:hover {
-    background-color: #d6d6d6;
-}
-
 
 /* The switch - the box around the slider */
 

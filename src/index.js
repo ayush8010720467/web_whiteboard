@@ -4,8 +4,7 @@ web_whiteboard = (function(){
     let prevSate = getSavedWork();
     console.log(prevSate)
     let context = document.getElementById('white_board').getContext("2d");
-    let wb = document.getElementById('white_board');
-    let div_wb = document.getElementById('canvas_div');
+    let wb = document.getElementById('white_board')
     if(prevSate && window.innerHeight >= prevSate.height){
         
         wb.height = window.innerHeight;
@@ -30,6 +29,8 @@ web_whiteboard = (function(){
     let paint;
     if(clickX.length > 0){
         redraw();
+    } else{
+        fillCanvas();
     }
 
     const getElement = (selector) => {
@@ -41,8 +42,8 @@ web_whiteboard = (function(){
     };
 
     attachEvent("#white_board", "mousedown", (e) => {
-        const mouseX = e.pageX - div_wb.offsetLeft;
-        const mouseY = e.pageY - div_wb.offsetTop;
+        const mouseX = e.pageX - wb.offsetLeft;
+        const mouseY = e.pageY - wb.offsetTop;
         
         paint = true;
         addClick(mouseX, mouseY);
@@ -51,7 +52,7 @@ web_whiteboard = (function(){
 
     attachEvent("#white_board", "mousemove", (e) => {
         if (paint) {
-            addClick(e.pageX - div_wb.offsetLeft, e.pageY - div_wb.offsetTop, true);
+            addClick(e.pageX - wb.offsetLeft, e.pageY - wb.offsetTop, true);
             redraw();
         }
     });
@@ -89,10 +90,14 @@ web_whiteboard = (function(){
         redraw();
     }
     
-    function redraw() {
-        context.clearRect(0, 0, context.canvas.width, context.canvas.height); // Clears the canvas
+    function fillCanvas(){
+        context.clearRect(0, 0, context.canvas.width, context.canvas.height); 
         context.fillStyle = currentColor;
         context.fillRect(0, 0, wb.width, wb.height)
+    }
+
+    function redraw() {
+        fillCanvas();
             // context.strokeStyle = "#df4b26";
         context.lineJoin = "round";
     
@@ -182,87 +187,7 @@ function eventHandlers(e){
 }
 document.addEventListener('keyup', eventHandlers, false);
 
-//* MENU
-
-const menu = document.querySelector(".menu");
-const buttons = document.querySelector(".left");
-
-menu.addEventListener("click",(e)=>{
-    if(buttons.classList.contains("off")){
-        buttons.classList.remove("off");
-        buttons.classList.add("show");        
-    }
-    else{
-        buttons.classList.remove("show");
-        buttons.classList.add("off");  
-    }
-})
-
-//* Hover
-const clearHover = document.querySelector(".clear");
-const newHover = document.querySelector(".new");
-const saveHover = document.querySelector(".save");
-const undoHover = document.querySelector(".undo");
-const saveWorkHover = document.querySelector(".saveWork");
-const deleteSavedHover = document.querySelector(".deleteSaved");
-
-const clearBtn = document.querySelector(".clearBtn");
-const newBtn = document.querySelector(".newBtn");
-const saveBtn = document.querySelector(".saveBtn");
-const undoBtn = document.querySelector(".undoBtn");
-const saveWorkBtn = document.querySelector(".saveWorkBtn");
-const deleteSavedBtn = document.querySelector(".deleteSavedBtn");
-
-clearBtn.addEventListener("mouseover",()=>{
-    clearHover.style.display = "block";
-});
-
-clearBtn.addEventListener("mouseout",()=>{
-    clearHover.style.display = "none";
-});
-
-newBtn.addEventListener("mouseover",()=>{
-    newHover.style.display = "block";
-});
-
-newBtn.addEventListener("mouseout",()=>{
-    newHover.style.display = "none";
-});
-
-saveBtn.addEventListener("mouseover",()=>{
-    saveHover.style.display = "block";
-});
-
-saveBtn.addEventListener("mouseout",()=>{
-    saveHover.style.display = "none";
-});
-
-undoBtn.addEventListener("mouseover",()=>{
-    undoHover.style.display = "block";
-});
-
-undoBtn.addEventListener("mouseout",()=>{
-    undoHover.style.display = "none";
-});
-
-saveWorkBtn.addEventListener("mouseover",()=>{
-    saveWorkHover.style.display = "block";
-});
-
-saveWorkBtn.addEventListener("mouseout",()=>{
-    saveWorkHover.style.display = "none";
-});
-
-deleteSavedBtn.addEventListener("mouseover",()=>{
-    deleteSavedHover.style.display = "block";
-});
-
-deleteSavedBtn.addEventListener("mouseout",()=>{
-    deleteSavedHover.style.display = "none";
-});
-
-
 setInterval(()=>{
     web_whiteboard.saveWork();
-},1000);
+},100);
 
