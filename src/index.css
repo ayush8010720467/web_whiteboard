@@ -18,7 +18,7 @@ html {
 /* Shifted the inline css to external css */
 
 canvas {
-    width: 90vw;
+    width: 100vw;
     margin: 10px;
     position: relative;
     top:0;
